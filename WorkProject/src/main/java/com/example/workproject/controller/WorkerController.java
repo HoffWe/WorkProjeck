@@ -27,7 +27,7 @@ public class WorkerController {
     @PostMapping("")
     public ResponseEntity<String> add(@RequestBody WorkerDto workerDto){
         final Worker worker = workerService.add(workerDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Dodano pomyślnie");
+        return ResponseEntity.status(HttpStatus.CREATED).body("Pomyślnie dodano nowego pracownika");
     }
 
     @GetMapping("/{id}")
@@ -42,4 +42,10 @@ public class WorkerController {
                 .map(WorkerToDto::mapToDto)
                 .collect(Collectors.toList());
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable long id){
+        workerService.delete(id);
+    }
+
 }

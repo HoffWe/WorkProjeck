@@ -2,6 +2,7 @@ package com.example.workproject.service;
 
 import com.example.workproject.dto.WorkerDto;
 import com.example.workproject.model.Worker;
+import com.example.workproject.repository.MessageRepository;
 import com.example.workproject.repository.WorkerRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +14,9 @@ public class JpaWorkerService implements WorkerService{
 
     private final WorkerRepository workerRepository;
 
-    public JpaWorkerService(WorkerRepository workerRepository) {
+    public JpaWorkerService(WorkerRepository workerRepository, MessageRepository messageRepository) {
         this.workerRepository = workerRepository;
+
     }
 
     @Override

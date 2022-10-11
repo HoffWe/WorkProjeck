@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
@@ -18,11 +19,13 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne (targetEntity = Worker.class,fetch = FetchType.LAZY, optional = false)
-    @JoinColumn (name = "recipient_id")
+    @ManyToOne (targetEntity = Worker.class,fetch = FetchType.EAGER, optional = false)
     private Worker recipient;
+    @ManyToOne(targetEntity = Worker.class, fetch = FetchType.EAGER, optional = false)
+    private Worker sender;
     private String content;
     private String title;
+    private LocalDateTime issueDate;
 
     @Override
     public boolean equals(Object o) {

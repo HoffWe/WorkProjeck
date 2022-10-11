@@ -27,7 +27,10 @@ public class JpaMessageService implements MessageService{
         Message message = Message.builder()
                 .title(newMessage.getTitle())
                 .recipient(Worker.builder().id(newMessage.getRecipientId()).build())
-                .content(newMessage.getContent()).build();
+                .sender(Worker.builder().id(newMessage.getSenderId()).build())
+                .content(newMessage.getContent())
+                .issueDate(LocalDateTime.now())
+                .build();
         return messageRepository.save(message);
     }
 
@@ -41,6 +44,10 @@ public class JpaMessageService implements MessageService{
         return messageRepository.findByRecipientId(workerId);
     }
 
+    @Override
+    public List<Message> findBySenderId(long senderId) {
+        return messageRepository.findBySenderId(senderId);
+    }
 
     @Override
     public void deleteById(long messageId) {

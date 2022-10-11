@@ -10,5 +10,6 @@ public class MessageDtoIn {
 
     private String title;
     private long recipientId;
+    private long senderId;
     private String content;
 }
