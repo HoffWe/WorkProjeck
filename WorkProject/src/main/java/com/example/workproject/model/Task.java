@@ -20,7 +20,7 @@ public class Task {
     private String title;
     @OneToOne
     private Message message;
-    @OneToOne
+    @ManyToOne
     private Worker executor;
     private LocalDateTime finishDate;
     private LocalDateTime issueDate;

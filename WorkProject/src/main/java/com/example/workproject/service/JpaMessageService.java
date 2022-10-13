@@ -7,7 +7,6 @@ import com.example.workproject.repository.MessageRepository;
 import com.example.workproject.repository.WorkerRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -16,18 +15,19 @@ import java.util.Optional;
 public class JpaMessageService implements MessageService{
 
     private final MessageRepository messageRepository;
+    private final WorkerRepository workerRepository;
 
-
-    public JpaMessageService(MessageRepository messageRepository) {
+    public JpaMessageService(MessageRepository messageRepository, WorkerRepository workerRepository) {
         this.messageRepository = messageRepository;
+        this.workerRepository = workerRepository;
     }
 
     @Override
     public Message add(MessageDtoIn newMessage) {
         Message message = Message.builder()
                 .title(newMessage.getTitle())
-                .recipient(Worker.builder().id(newMessage.getRecipientId()).build())
-                .sender(Worker.builder().id(newMessage.getSenderId()).build())
+                .recipient(workerRepository.getReferenceById(newMessage.getRecipientId()))
+                .sender(workerRepository.getReferenceById(newMessage.getSenderId()))
                 .content(newMessage.getContent())
                 .issueDate(LocalDateTime.now())
                 .build();
@@ -35,8 +35,8 @@ public class JpaMessageService implements MessageService{
     }
 
     @Override
-    public Optional<Message> findById(long messageid) {
-        return messageRepository.findById(messageid);
+    public Optional<Message> findById(long messageId) {
+        return messageRepository.findById(messageId);
     }
 
     @Override

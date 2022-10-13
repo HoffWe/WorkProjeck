@@ -3,9 +3,6 @@ package com.example.workproject.mapper;
 import com.example.workproject.dto.MessageDtoOut;
 import com.example.workproject.dto.WorkerDtoOut;
 import com.example.workproject.model.Message;
-import com.example.workproject.model.Worker;
-import com.example.workproject.repository.WorkerRepository;
-import com.example.workproject.service.WorkerService;
 import lombok.Builder;
 import lombok.Data;
 
