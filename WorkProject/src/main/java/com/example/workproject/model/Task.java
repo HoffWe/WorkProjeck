@@ -22,7 +22,7 @@ public class Task {
     private Message message;
     @ManyToOne
     private Worker executor;
-    private LocalDateTime finishDate;
+    private LocalDateTime deadLine;
     private LocalDateTime issueDate;
     private boolean isFinished;
 

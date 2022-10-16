@@ -36,7 +36,7 @@ public class TaskToDto {
                         .lastName(task.getExecutor().getLastName())
                         .build())
                 .issueDate(task.getIssueDate())
-                .finishDate(task.getFinishDate())
+                .finishDate(task.getDeadLine())
                 .isFinished(task.isFinished())
                 .build();
 

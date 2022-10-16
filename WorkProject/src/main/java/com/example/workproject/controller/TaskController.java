@@ -28,7 +28,7 @@ public class TaskController {
     @PostMapping
     public ResponseEntity<String> add(@RequestBody TaskDtoIn taskDtoIn){
         final Task task = taskService.add(taskDtoIn);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Wiadomość pomyślnie wysłana");
+        return ResponseEntity.status(HttpStatus.CREATED).body("Zadanie pomyślnie wysłana");
     }
 
     @GetMapping("/{id}")

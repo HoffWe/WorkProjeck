@@ -30,7 +30,7 @@ public class JpaTaskService implements TaskService{
         Task task = Task.builder()
                 .title(newTask.getTitle())
                 .issueDate(LocalDateTime.now())
-                .finishDate(newTask.getFinishDate())
+                .deadLine(newTask.getFinishDate())
                 .isFinished(false)
                 .executor(workerRepository.getReferenceById(newTask.getExecutorId()))
                 .message(messageRepository.getReferenceById(newTask.getMessageId()))

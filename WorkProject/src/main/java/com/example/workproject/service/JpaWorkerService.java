@@ -26,6 +26,8 @@ public class JpaWorkerService implements WorkerService{
                 .lastName(workerDto.getLastName())
                 .eMail(workerDto.getEMail())
                 .password(workerDto.getPassword())
+                .role("ROLE_USER")
+                .enabled(true)
                 .build();
         return workerRepository.save(worker);
     }
